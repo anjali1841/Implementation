@@ -1,0 +1,85 @@
+746835269006
+731696855308
+
+14818-grid
+
+
+
+776365340516
+55976.49-grid
+56536.25-dec
+
+----------------------------------------------------------------------------------------------
+
+1286776.85
+
+localValue=1274036.49
+Insurance=12740.36
+frightamt=0
+
+CIF=localValue+Insurancefrightamt
+
+Customs Value=CIF
+
+-------------------------------------------------------------------------------------------------
+
+total value--
+invoice value in shipmentobject is total value in UI
+
+Customs Value is total value in grid value
+
+------------------------------------------------------------------------------------------------------------
+CIF-149666.15--dec
+   -148184.31---grid view
+
+Insurance-1481.84
+local value-148184.31
+frieght AMT-o
+
+---------------------------------------------------------------------------------
+
+746835269006
+
+
+localValue-123090.92+1230.91
+
+
+43.50 *1.35+0.59 =58.782
+
+
+----------------------------------------------------------------------------
+
+commodity.localValue = commodity.invoiceValue * exchangeRate
+
+--1.-->13.53=10*1.3534
+--2.-->121.81=90.0*1.3534
+---------------------------
+3.->123090.92=90949.4*1.3534
+CIF==shipment LOCALVALUE+insurance+FreightAmt
+CIF--123090.92+1230.91=124321.83
+----------------------------
+121.81
+ 13.53
+------------
+135.34
+----------------------------
+
+CIF will be calculated by below rule :
+cif = localValue + insurance + freightAmt
+
+----------------------------
+CIF= Shipment level LocalVaue+Insurance
+CIF=135.34+1.35--136.69
+------------------------------
+
+
+
+insurance = (freightAmt + localValue) * INSURANCE_RATE
+
+
+
+
+
+148184.31-local
+1.3534
+

@@ -1,0 +1,135 @@
+Duty and Tax online payment system -DOPS 
+
+
+fdx.apac.opssol.gemini.imports.transporter.billing
+
+
+Data Ware house
+
+
+{
+    "messageID": 2234,
+    "messageTimestamp": 1606640504412,
+    "messageBody": "",
+    "messageProperties": {
+        "SOURCE_ACTIVITY_CD": "EDITRIGGER",
+        "MSG_DESTINATION_NAME": "FDSVIPC.GENIUS.IMPORTS.DATA.WAREHOUSE",
+        "TRIGGER_BY": "EDITRIGGER",
+        "SHIPMENT_UNIQUE_REF": "7714492460122460006000"
+    },
+    "msgStorePartitionKey": "",
+    "messageRefKey": "7714492460122460006000"
+}
+
+Clearnace :
+{
+"messageID":2234,
+"messageTimestamp":1606640504412,
+"messageBody": "",
+"messageProperties":{
+"SOURCE_ACTIVITY_CD":"SHIPMENT_EVENT_PROC",
+"MSG_DESTINATION_NAME":"FDSVIPC.GENIUS.IMPORTS.CLEARANCE.COUNTRY",
+"TRIGGER_BY":"SHIPMENT_EVENT_PROC",
+"SHIPMENT_UNIQUE_REF":"7775037225662459788000"
+},
+"msgStorePartitionKey":"",
+"messageRefKey":"7775037225662459788000"
+}
+
+DTQ:
+
+{
+    "messageID": 2234,
+    "messageTimestamp": 1606640504412,
+    "messageBody": "",
+    "messageProperties": {
+        "SOURCE_ACTIVITY_CD": "EDITRIGGER",
+        "MSG_DESTINATION_NAME": "fdx.apac.opssol.gemini.imports.sortcode",
+        "TRIGGER_BY": "EDITRIGGER",
+        "SHIPMENT_UNIQUE_REF": "7714492460122460006000"
+    },
+    "msgStorePartitionKey": "",
+    "messageRefKey": "7714492460122460006000"
+}
+
+gemini-all-biz-eccp-ec-ced-connector-service
+
+sort code:
+fdx.apac.opssol.gemini.imports.sortcode
+
+{
+  "persistFlag": "Y",
+  "shipmentList": [
+ 
+ 
+  ]
+}
+
+
+POST URL
+https://gemini-inbound-shipment-data-service-release.app.singdev1.paas.fedex.com/import-shipment/save-shipment
+Get URL:
+https://gemini-inbound-shipment-data-service-release.app.singdev1.paas.fedex.com/import-shipment/awb/770412044411
+
+
+{
+"messageID":2234,
+"messageTimestamp":1606640504412,
+"messageBody": "",
+"messageProperties":{
+"SOURCE_ACTIVITY_CD":"DNT",
+"MSG_DESTINATION_NAME":"fdx.apac.opssol.gemini.imports.transporter.billing",
+"TRIGGER_BY":"DNT",
+"SHIPMENT_UNIQUE_REF":"9045383434552459585000"
+},
+"msgStorePartitionKey":"",
+"messageRefKey":"9045383434552459585000"
+}
+
+-------------------------------
+https://gemini-inbound-bfc-integration-service-release.app.singdev1.paas.fedex.com/edw-customer-account-detail?accountnbrs=772459491
+-------------------------------------------------------
+
+SG-CONTROLLED,TMAR CONTROLLED-->GEM
+
+IDT-Turn on EDI Service
+Satuts Fail avuthey -Gem sort code add avvaledhu so,DB Configuration changes issue-need to connect with thiru
+
+null loading port -error
+
+json-take legarrival date 
+ and search in conveyance and filter with MAWB number 
+ and click on edit icon
+ then give orgin port location and submit it 
+ come EB declaration view of shipment and submit the shipment 
+ then again perform consloe submission
+
+
+Legacy url:-
+https://sgdevaps.ute.apac.fedex.com/centera/gemsupport/index.cgi
+
+Type: VISA
+Card number: 4000 1600 0000 0004
+Expiry: 03/2030
+CVC: 737
+
+Type: VISA
+Card number: 4000 1800 0000 0002
+Expiry: 03/2030
+CVC: 737
+
+
+
+shipment locking:
+[12:45 PM] Arcot Rayan (OSV)
+https://gemini-distributed-locking-service-development.app.singdev1.paas.fedex.com/lock?lockRef=7767713105092460471000&clrncProcessType=imports&entity=SHIPMENT&moduleName=OVERRIDE_SANITY&userID=system
+
+
+
+4222000006724235
+
+12/2028
+
+cvv:123
+
+Jane

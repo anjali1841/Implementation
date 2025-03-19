@@ -1,0 +1,60 @@
+
+Test Case - 003
+
+Launch the application
+Click Login Link - from top menu
+Enter value for username
+Enter value for password
+Click Login button
+Click "APPAREL & SHOES"
+select dropdown for "sort by" - "Low To High"
+Click Page 2
+add "Genuine Leather Handbag with Cell Phone Holder & Many Pockets" to cart
+navigate to shopping cart page
+check the Term and Condition
+click the checkout process
+complete the checkout process
+
+--------------------------------------------------------------------------------------------
+System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe"); 
+		ChromeDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+        driver.get("https://demowebshop.tricentis.com/");
+        driver.findElement(By.linkText("Log in")).click();
+        driver.findElement(By.id("Email")).sendKeys("anjali.poloj6u2@gmail.com");  
+        driver.findElement(By.id("Password")).sendKeys("Register@123"); 
+        driver.findElement(By.xpath("/html/body/div[4]/div[1]/div[4]/div[2]/div/div[2]/div[1]/div[2]/div[2]/form/div[5]/input")).click();
+        driver.findElement(By.xpath("/html/body/div[4]/div[1]/div[2]/ul[1]/li[4]/a")).click();
+
+        WebElement product =driver.findElement(By.id("products-orderby"));
+        Select option = new  Select(product);
+        option.selectByIndex(3);
+        driver.findElement(By.xpath("/html/body/div[4]/div[1]/div[4]/div[2]/div[2]/div[2]/div[4]/ul/li[2]/a")).click();
+        driver.findElement(By.xpath("/html/body/div[4]/div[1]/div[4]/div[2]/div[2]/div[2]/div[3]/div[3]/div/div[2]/div[3]/div[2]/input")).click();
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("//*[@id=\"topcartlink\"]/a/span[1]")).click(); 
+        driver.findElement(By.xpath("//*[@id=\"termsofservice\"]")).click(); 
+        driver.findElement(By.xpath("/html/body/div[4]/div[1]/div[4]/div/div/div[2]/div/form/div[2]/div[2]/div[4]")).click();
+        Thread.sleep(3000);
+      WebElement product2= driver.findElement(By.xpath("//*[@id=\"BillingNewAddress_CountryId\"]"));
+      Select option2 = new  Select(product2);
+      option2.selectByVisibleText("India");
+      driver.findElement(By.id("BillingNewAddress_City")).sendKeys("Vizag");
+       driver.findElement(By.id("BillingNewAddress_Address1")).sendKeys("ap");
+       driver.findElement(By.id("BillingNewAddress_Address2")).sendKeys("ap");
+        driver.findElement(By.id("BillingNewAddress_ZipPostalCode")).sendKeys("1234");
+        driver.findElement(By.xpath("//*[@id=\"BillingNewAddress_PhoneNumber\"]")).sendKeys("1234");
+        driver.findElement(By.xpath("//*[@id=\"BillingNewAddress_FaxNumber\"]")).sendKeys("134");
+        driver.findElement(By.xpath(" //*[@id=\"billing-buttons-container\"]/input")).click();
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("//*[@id=\"shipping-buttons-container\"]/input")).click();
+        Thread.sleep(3000);
+       driver.findElement(By.xpath(" //*[@id=\"shipping-method-buttons-container\"]/input")).click();
+       Thread.sleep(3000);
+       driver.findElement(By.xpath("//*[@id=\"payment-method-buttons-container\"]/input")).click();
+       Thread.sleep(3000);
+      driver.findElement(By.xpath("//*[@id=\"payment-info-buttons-container\"]/input")).click();
+      Thread.sleep(3000);
+      driver.findElement(By.xpath("//*[@id=\"confirm-order-buttons-container\"]/input")).click();
+      Thread.sleep(3000);
+      driver.findElement(By.xpath("/html/body/div[4]/div[1]/div[4]/div/div/div[2]/div/div[2]/input")).click();

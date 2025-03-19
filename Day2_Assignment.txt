@@ -1,0 +1,26 @@
+package Day2;
+
+import java.util.Scanner;
+
+public class Dowhile {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+       Scanner Selenium =new Scanner(System.in);
+       String Answer;
+       do {
+    	   int A,B,Add;
+    	   System.out.println("Enter A value");
+    	   A= Selenium.nextInt();
+    	   System.out.println("Enter B value");
+    	   B=Selenium.nextInt();
+    	   Add=A+B;
+    	   System.out.println("Addition of A and B is " + Add);
+    	   System.out.println("Perform Addition (Y/N):");
+    	   Answer = Selenium.next();
+    	   
+       }while(Answer.equalsIgnoreCase("Y"));
+	}
+
+}

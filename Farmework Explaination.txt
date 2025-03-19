@@ -1,0 +1,13 @@
+We are using a Maven Project to manage all dependencies which our project requires and using testNG as frame work .Along with testNG framework we are using Data Driven Approach using TestNG @DataProvider annotation so we can run our test multiple times with different Data.
+
+
+src/test/java-- we have src/test/java folder where we have one package named #testcases and we are maintaining all our test cases files(java files).
+
+Ex:LoginTest.java
+
+We are using @Test Annotation for tests.
+
+src/test/resources
+Inside src/test/resource we have one package with name #utilities where we manitained our data.properties file containing url and username and password data.Our excel  files are also present inside this utilities package.
+
+src/main/java -In this 

@@ -1,0 +1,13 @@
+valid company - valid desc - company group and CONTROLLED
+
+ 
+
+valid company - invalid desc - company group and CONTROLLED
+
+ 
+
+invalid company - valid desc - commodity group and CONTROLLED
+
+ 
+
+invalid company - invalid desc - NON_CONTROLLED
