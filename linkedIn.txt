@@ -1,0 +1,110 @@
+Software QA Engineer At Mphasis  || 3+ Years Exp. ||SDET || Automation Testing & Manual Testing Expert ||Java || Selenium Webdriver  || ||  Cucumber(BDD) || TestNG ||API Testing  Rest Assured & Postman||  Functional Testing ||Regression Testing ||Agile Methodologies  ||
+
+
+
+1. Automation Testing using Selenium WebDriver (Java):
+Develop and maintain automated test scripts using Selenium WebDriver in Java.
+Design and implement test automation frameworks.
+Integrate automated tests with Continuous Integration/Continuous Deployment (CI/CD) pipelines.
+Execute automated test cases and analyze results.
+2. API Testing using Cypress and Postman:
+Design, create, and maintain API test cases using Cypress and Postman.
+Automate API tests and integrate them into the testing pipeline.
+Perform API validation, including RESTful services, ensuring proper data exchange between services.
+Document API testing procedures and results.
+3. Mobile Testing using Appium:
+Develop and execute automated test scripts for mobile applications using Appium.
+Work on different mobile platforms (iOS and Android) to ensure cross-platform compatibility.
+Integrate Appium tests with CI/CD tools for automated build verification.
+Create and maintain mobile test automation frameworks.
+4. Frameworks like Cucumber:
+Implement Behavior Driven Development (BDD) using Cucumber.
+Write feature files and step definitions to create test scenarios.
+Collaborate with stakeholders to define acceptance criteria and ensure all requirements are met.
+Integrate Cucumber tests with the existing automation framework.
+5. Functional Testing, Smoke Testing, Regression, and Retesting:
+Create comprehensive functional test cases based on requirements.
+Conduct smoke testing to ensure the stability of new builds.
+Conduct retesting of fixed defects to ensure they are resolved.
+Document and report test results and track defects.
+6. Agile (Scrum) Methodologies:
+Participate in daily stand-ups, sprint planning, sprint reviews, and retrospectives.
+Collaborate with cross-functional teams to ensure effective sprint execution.
+Estimate testing efforts and contribute to sprint planning.
+7. Communication, Leadership, and Interpersonal Skills:
+Communicate effectively with team members, stakeholders, and clients to understand and resolve issues.
+Lead and mentor junior team members, providing guidance and support.
+Foster a collaborative work environment to achieve project goals.
+8. Writing Test Cases and Test Execution Reports:
+Develop detailed, comprehensive, and well-structured test cases.
+Execute test cases and document results.
+Track and manage defects using defect management tools.
+9. Defect Management:
+Identify, log, and track defects using defect management tools.
+Prioritize defects based on severity and impact.
+Maintain detailed documentation of defect history and resolution progress.
+
+-------------------------------
+Sahathiya :
+
+Dynamic Software Test Engineer | Expert in Ensuring Quality & Functionality | Proficient in Manual & Automated Testing Methodologies.
+Developed comprehensive test cases, and test scenarios based on user acceptance criteria and change request documents provided by the client.
+Uploaded and managed test cases using ALM (Application Lifecycle Management), ensuring organized and efficient testing processes.
+Executed various testing types including sanity testing, functional testing, regression testing, exploratory testing, and user acceptance testing to identify and document software defects.
+Collaborated closely with development teams to clarify requirements and communicate testing progress, issues, and risks effectively.
+Played a key role in improving product quality by reporting and documenting defects observed during testing and facilitating their resolution.
+Proficient in designing and executing comprehensive test cases, and test scenarios, utilizing a blend of manual and automated testing methodologies. 
+Strong analytical and problem-solving abilities, coupled with a commitment to delivering high-quality software solutions. Well-versed in Agile methodologies and experienced in working within Agile environments. 
+Recognized for exceptional communication skills, adept at effectively communicating testing progress, issues, and risks with stakeholders. Proven track record of success in driving the success of software projects through meticulous testing practices and a dedication to excellence.
+------------------------------------------------------------------------------------------------------
+Worked on various automation frameworks such as Data Driven, Key Driven, Hybrid Approach, BDD.
+Enhanced and optimized selenium UI Automation scripts to accommodate the new features in the application.
+Genarated testcases(test scripts) using Selenium element locators, Selenium Webdriver, Java and TestNG Annotations.
+Hands-on experience in automation tools like selenium with java using TestNG framework.
+---------------------------------------------------------------------------------------------------------------------------------------
+Performed requirement feasibility analysis for user stories and identified test scenarios.
+Contributed to the preparation of the defect management,communication and test scope sections of the test plan.
+Actively participated in Smoke, Functional and Adhoc testing during SIT phase & UAT phase.
+Involved in Test data identification and gathering.
+Strong communication and interaction with clients,developers, business analysts, managers and testing teams.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+With 6+ years of extensive experience as a Software Development Engineer in Test (SDET) and DevOps, I have a strong background in developing robust automation frameworks, implementing CI/CD pipelines, and ensuring high-quality software releases. I possess a solid understanding of both software development and operational best practices, enabling seamless collaboration between development and operations teams.
+---------------------------------------------------------------------------------------------------------------------------------
+Rohit Barahate | Automation / Manual Test Engineer | 3 Years EXP. | Pune
+Web Automation Testing using Selenium WebDriver, Java, TestNG, Cucumber, Maven, Git, SVN, Jenkins & Selenium Grid using Page Object Model.
+API Testing using Postman and Swagger API Tool.
+Manual Testing Techniques with all aspects of SDLC and STLC.
+Experience of Framework Design from Scratch for Web Automation.
+Developing, Executing & Maintaining Automation Test Cases using Java, SQL, HTML & JavaScript.
+Debugging & Running the Test, Analyzing the Test Results.
+Tools Experience - Putty, Oracle VM, Browser Stack.
+Experience of working in Agile & Scrum Environment.
+Familiar with Functional & Non-Functional Testing, Mobile Testing, Regression & Smoke Testing.
+Test & Defect Management Process using JIRA.
+---------------------------------------------------------------------------------------------------------
+At Tata Consultancy Services, our team enhanced software module testing, where I spearheaded a 20% reduction in post-release defects through functional, regression, and performance testing. Our efforts in automating test cases resulted in a 30% decrease in manual testing, reflecting our commitment to efficiency and quality.
+
+With a Bachelor of Engineering from North Maharashtra University and a robust foundation in agile methodologies, I actively contribute to refining our sprint cycle processes. My continuous engagement in industry workshops ensures that my skills in Selenium and testing best practices remain at the forefront of technological advancement.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Executed comprehensive manual testing procedures, ensuring the reliability and functionality of diverse software applications.
+• Developed and maintained detailed test documentation, including test cases and test scripts, to facilitate efficient testing processes.
+• Collaborated closely with cross-functional teams, providing valuable insights to improve software quality and user experience.
+• Proficient in identifying, documenting, and prioritizing software defects, contributing to streamlined development cycles.
+-----------------
+ Collaborated on test planning, executing comprehensive testing for software modules.
+• Conducted functional, regression, and performance testing using Selenium, reducing post-release defects by 20%.
+• Automated test cases, cutting manual testing efforts by 30% and improving overall testing efficiency.
+• Contributed actively to agile methodologies, streamlining testing processes in sprint cycles.
+• Stayed updated on industry trends through workshops, enhancing testing skills for continuous improvement.
+--------------
+ Collaborated on test planning, executing comprehensive testing for software modules.
+• Conducted functional, regression, and performance testing using Selenium, reducing post-release defects by 20%.
+• Automated test cases, cutting manual testing efforts by 30% and improving overall testing efficiency.
+• Contributed actively to agile methodologies, streamlining testing processes in sprint cycles.
+• Stayed updated on industry trends through workshops, enhancing testing skills for continuous improvement.
+---------------------------------------------
+I am a Quality Assurance professional with over 3+ years of experience in ensuring the delivery of high-quality software solutions at Tata Consultancy Services. My expertise spans manual, performance, and automation testing, with a proven track record of validating complex applications in the financial domain and driving quality across agile projects. 
+
+Throughout my career, I have demonstrated proficiency in developing and executing robust testing strategies, leveraging tools like Selenium, LoadRunner and Postman to ensure seamless functionality, reliability, and performance. My hands-on experience in defect management and end-to-end testing has been instrumental in enhancing product reliability and user satisfaction. 
+
+With a strong foundation in agile methodologies and a detail-oriented approach, I am committed to upholding excellence in software delivery. I aim to collaborate with innovative teams to further optimize processes, mitigate risks, and contribute to building scalable, user-centric applications.

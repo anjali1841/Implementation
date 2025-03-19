@@ -1,0 +1,8 @@
+2/7/24
+
+1.software testing
+2.BUG
+3.DEFECT
+4.VALIDATION 
+5.VERIFICATION
+----------------------------

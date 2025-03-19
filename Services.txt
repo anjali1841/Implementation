@@ -1,0 +1,44 @@
+
+accsm-customs-epermits-business-service
+accsm-customs-epermits-integration-service
+--------------------------------------------------
+accsm-scsm-bridge-data-service-release
+accsm-scsm-bridge-business-service-release
+-------------------------------------------------
+gemini-inbound-console-edi-integration-service
+accsm-console-bridge-data-service 
+accsm-console-bridge-business-service
+---------------------------------------------------
+accsm-console-inbound-business-service-release
+---------------------------------------------------
+gemini-inbound-tamr-feedback-publisher-release
+---------------------------------------------------------
+selection codes:
+accsm-scsm-bridge-data-service-release
+accsm-scsm-bridge-business-service-release
+
+tn permit:
+accsm-customs-epermits-business-service
+accsm-customs-epermits-integration-service
+
+EDI Reday-EDI Sent from gemini:
+gemini-inbound-data-service-release
+gemini-inbound-console-integration-service-release
+
+Locking the shipment :
+https://gemini-distributed-locking-service-release.app.singdev1.paas.fedex.com/lock?clrncProcessType=IMPORTS&entity=abc&lockRef=1871303655212460040000&moduleName=SHIPMENT&userID=5430940
+
+
+sort codes in legacy:
+
+----------------------------------------------------------------
+
+SELECT * FROM gemini_incoming_interface WHERE gemini_shipoid LIKE '656523577454%' ORDER BY SEQ;
+
+SELECT * FROM gemini_incoming_interface WHERE gemini_shipoid LIKE '656523577443%';
+
+---------------------------------------------------------------------------------------
+
+accsm-console-inbound-business-service-staging
+----------------------------------------
+

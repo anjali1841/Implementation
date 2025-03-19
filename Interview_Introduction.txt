@@ -1,0 +1,62 @@
+I am Poloju Anjali.I am from Hyderabad I started my journey with mphasis company as a trainee software tester from 2021 to till now I am working as software Test Engineer with 3 years of experience in both Manual and Automation testing and handling  projects for Client- Fedex.I have been working on logistic clearance domain .
+
+
+I have hands-on experience in functional testing,sanity testing,regression testing,retesting and also  I am skilled in Selenium Webdriver for Web based UI automation testing using frameworks like  Cucumber and  TestNG with POM design pattern.
+
+
+In my project my role and Responsibilites :
+I have been part of agile teams and actively participated in daily-stand-ups,sprint planning,gromming sessions,sprint retrospectives and defect tracking -Triage calls.
+During sprint planning,I review the user stories,discuss acceptance criteria with the team,creating testcases,testscenarios by UCD's of features and excuting testcases  to performing functional and regression testing,and When a defect is identified,I log it in ALM with all relevant details such as the steps to reproduce,severity,priority and screenshots,I then assign the defct to the developer for resloution and monitor its status through the defect life cycle.
+I work closely, with developers and Product owner to ensure early defect identification.here,I am using ALM for tracking defects and continuosly provide feedback during sprints.
+
+
+
+ later,I moved to automation testing also I participated in sprint meetings and identify test cases that need to be automated or tested manually.I am testing a web based aplication Customs clearance_Gemini to be tested in clearance domain.I have used to test this web application using selenium ,cucumber tool in BDD apporach and here we have used page object model as design pattern.
+
+
+
+---------------------------------------------------------------
+In this BDD framework,the first file I have used is Pom.xml file -this is basically an xml file created by default for every maven project.It stores all the dependenices used in project like selenium,cucumber TestNg
+
+
+
+-------------------------------------------
+About the Project:
+------------------
+
+I have worked on Project for a client-Fedex,It is based on logistic -clearance domain.Clerance is an authorization for the shipments  to proceed.Custom clearance is a neccessary to procedure before shipments can be imported or exported internationally.Here ,I have used Web Based application called GEMINI (Global Electronic Manifest Intercest  Integrated Systems ) is the modernized inhouse application(Used by Fedex) to do the clearance activites -Manifest Check(Shipment data verification),Customer Matching,Customer Contact,Conveyance ,Declaration and Biling for Clearance.
+Successfully executed over 500 test cases using Selenium, Junit, TestNG, Maven and Cucumber, ensuring robust test coverage.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hi Anjali,
+
+I noticed your role at Mphasis and am eager to explore opportunities. The Senior Software Engineer position caught my eye.
+
+My experience aligns with Mphasis' innovative approach. I believe I can contribute effectively to your team.
+
+Mphasis' focus on customer-centricity resonates with me. I am enthusiastic about the work you do.
+
+Are there openings available? Thank you for considering me.
+
+Sincerely,
+
+Rayala

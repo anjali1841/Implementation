@@ -1,0 +1,22 @@
+https://gemini-import-edm-doc-handler-service-release.app.singdev1.paas.fedex.com/v1/edmupload/files
+
+AppDynamics
+
+Upload:
+https://gemini-import-edm-doc-handler-service-release.app.singdev1.paas.fedex.com/v1/edmupload/files
+
+
+Download:
+https://gemini-import-edm-doc-download-service-release.app.singdev1.paas.fedex.com/edm/v1/refreshImageByDocType?awbNumber=700000000001&shipDate=20240812&shipOidNumber=6000000010020000012345
+
+
+
+
+
+awbNum	600000001002	false	text/plain	true
+docTypCd	CI	false	text/plain	true
+origLoc	BRU	false	text/plain	true
+destLoc	SG	false	text/plain	true
+destCntry	SG	false	text/plain	true
+shpmtDt	2024-08-14T13:09:50.466	false	text/plain	true
+Content-Type	application/json	false	text/plain	true

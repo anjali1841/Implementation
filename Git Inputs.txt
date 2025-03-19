@@ -1,0 +1,17 @@
+git -->click on user(top right corner)-->settings-->developer seetings(left corner )-->personal access tokens-->tokens(classic)-->generate newtoken-->generate new token(classic) select repo--> expitartion--select no expiration-->then generate token-->  copy the token
+-------------------------------------------------
+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
+-----------------------------
+decode -64
+------------------------------
+
+Please do Right click in Project -> Teams -> Reset and then click Pull.. [Take latest code and run]
+
+------------------------------
+NDkyMDUxOA==
+TGFwdG9wQDkxNjA=
+
+
+------------------------------------
+Chrome Update:
+https://storage.googleapis.com/chrome-for-testing-public/128.0.6613.84/win64/chromedriver-win64.zip

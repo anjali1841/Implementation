@@ -1,0 +1,141 @@
+post:https://gemini-inbound-shipment-data-service-release.app.singdev1.paas.fedex.com/import-shipment/save-shipment
+
+Body:{
+    "persistFlag": "Y",
+    "shipmentList": [
+]}
+
+
+GET:	 https://gemini-inbound-shipment-data-service-release.app.singdev1.paas.fedex.com/import-shipment/awb/772877297856
+
+Shipment Locking:
+POST:https://gemini-distributed-locking-service-release.app.singdev1.paas.fedex.com/lock?clrncProcessType=IMPORTS&entity=abc&lockRef=6290551528812460081000&moduleName=SHIPMENT&userID=4920518
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Freeze Logic :
+POST:https://gemini-inbound-ceevents-consumer-service-release.app.singdev1.paas.fedex.com/ceevnet-publish/update-shipmentevent
+
+Body:
+
+{
+	"trackType": "CE",
+	"trackTypeLvl": "Master",
+	"eventSeqNbr": "744905178879",
+	"eventSource": "ITIH",
+	"awbNbr": "772937150247",
+	"masterAwbNbr": "772937150247",
+	"shipmentOidNbr": "7729371502472460160000",
+	"trackItemUniqueID": "2459933000",
+	"associationType": "M",
+	"relatationShipCd": "I",
+	"msrOidNbr": "6989099528",
+	"hdGmtdt": "20221219",
+	"hdGmtTm": "13195346",
+	"svcCommitDate": "20221222",
+	"svcCommitTm": "180000",
+	"mdeShipDt": "20221219",
+	"mdeOrigLoc": "BEV",
+	"mdeOrigLocCountry": "IL",
+	"mdeCountryOfOrigin": "IL",
+	"mdeDestLoc": "SIN",
+	"mdeDestLocCountry": "SG",
+	"mdeShipperAccountNbr": "216591860",
+	"mdeShipperAddress1": "KIBBUTZ CABRI",
+	"mdeShipperCity": "CABRI",
+	"mdeShipperCountryCd": "IL",
+	"mdeShipperNm": "MICHAL  ZECHARIA",
+	"mdeShipperPhone": "049952611",
+	"mdeShipperPostalCd": "25212000",
+	"mdeShipperRef": "228001101",
+	"mdeConsigneeAccountNbr": "138792048",
+	"mdeConsigneeAddress1": "11 CHANGI NORTH RISE",
+	"mdeConsigneeCity": "SINGAPORE",
+	"mdeConsigneeCompany": "HS PACIFIC AEROSPACE PTE LTD",
+	"mdeConsigneeCountryCd": "SG",
+	"mdeConsigneeNm": "JAILANI JAIS",
+	"mdeConsigneePhone": "6562496670",
+	"mdeConsigneePostalCd": "498790",
+	"mdeTotPieces": "21",
+	"mdeWeightType": "K",
+	"mdeTotWeight": "201.60",
+	"mdeCurrType": "USD",
+	"mdeFormCd": "430",
+	"mdePackagingType": "01",
+	"mdeServiceBase": "2P",
+	"mdeDutiableFlg": "N",
+	"mdeTotCustomsVal": "16590.00",
+	"mdeBillDtyAccountNbr": "138792048",
+	"mdeBillDutyPayorCd": "C",
+	"mdeBillToAccount": "138792048",
+	"mdeBillToPaymentMethodCd": "01",
+	"mdeBillToPayorCd": "C",
+	"mdeDescription": "ALUMINUM CASTING",
+	"carrier": "FEDEX",
+	"mdeFolderID": "0b0dbba1e701689C",
+	"spclHandCodes": [
+		"02",
+		"83"
+	],
+	"routes": [{
+			"classVersionId": 1,
+			"oidNbr": -1,
+			"legDepartureLocation": "TLV",
+			"legDepartureCountryCode": "IL",
+			"legDepartureDate": "20221220",
+			"legDepartureTime": "1730",
+			"legArrivalLocation": "CGNR",
+			"legArrivalCountryCode": "DE",
+			"legArrivalDate": "20221220",
+			"legArrivalTime": "2000",
+			"legNbr": "1",
+			"routeNbr": "EF600",
+			"routeDate": "20221220"
+		},
+		{
+			"classVersionId": 1,
+			"oidNbr": -1,
+			"legDepartureLocation": "CGNR",
+			"legDepartureCountryCode": "DE",
+			"legDepartureDate": "20221220",
+			"legDepartureTime": "2300",
+			"legArrivalLocation": "CDG",
+			"legArrivalCountryCode": "FR",
+			"legArrivalDate": "20221220",
+			"legArrivalTime": "2340",
+			"legNbr": "2",
+			"routeNbr": "DE0038",
+			"routeDate": "20221220"
+		},
+		{
+			"classVersionId": 1,
+			"oidNbr": -1,
+			"legDepartureLocation": "CDG",
+			"legDepartureCountryCode": "FR",
+			"legDepartureDate": "20221221",
+			"legDepartureTime": "0025",
+			"legArrivalLocation": "FJR",
+			"legArrivalCountryCode": "AE",
+			"legArrivalDate": "20221221",
+			"legArrivalTime": "0500",
+			"legNbr": "3",
+			"routeNbr": "CD5040",
+			"routeDate": "20221221"
+		},
+		{
+			"classVersionId": 1,
+			"oidNbr": -1,
+			"legDepartureLocation": "FJR",
+			"legDepartureCountryCode": "AE",
+			"legDepartureDate": "20221221",
+			"legDepartureTime": "0510",
+			"legArrivalLocation": "SIN",
+			"legArrivalCountryCode": "SG",
+			"legArrivalDate": "20221222",
+			"legArrivalTime": "1045",
+			"legNbr": "4",
+			"routeNbr": "FX5040",
+			"routeDate": "20221221"
+		}
+	],
+	"prcsFlag": "P",
+	"serviceArea": "A1"
+}

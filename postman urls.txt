@@ -1,0 +1,17 @@
+770544060015-EDI ready,High Gst 
+391317543610-hvu ready
+----------------------------------------------------------------------------------
+postman-
+body:
+
+{
+  "persistFlag": "Y",
+  "shipmentList": [
+
+
+  ]
+}
+
+ post url:https://geniusneo-inbound-shipment-data-service-release.app.singdev1.paas.fedex.com/import-shipment/save-shipment
+
+json validator link:https://jsonlint.com/

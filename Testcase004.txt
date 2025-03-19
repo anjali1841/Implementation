@@ -1,0 +1,76 @@
+TC004:
+launch application
+click "Holidays"
+select "Stays"
+select "Lounge"
+select Station Name as "Jaipur"
+select Lounges
+select no.of persons as 4
+check in date
+check in time
+Duration in hours
+------------------------------------------------------
+package testcases;
+
+ 
+
+import java.util.Iterator;
+import java.util.Set;
+
+ 
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WindowType;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+ 
+
+public class Testcase004 {
+
+ 
+
+	public static void main(String[] args) {
+		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe"); 
+        ChromeDriver driver = new ChromeDriver();
+	    driver.manage().window().maximize();
+        driver.get("https://www.irctc.co.in/nget/train-search");
+        driver.findElement(By.xpath("/html/body/app-root/app-home/div[1]/app-header/div[2]/div[2]/div[2]/nav/ul/li[7]/a")).click();
+        driver.findElement(By.xpath("/html/body/app-root/app-home/div[1]/app-header/div[2]/div[2]/div[2]/nav/ul/li[7]/ul/li[3]/a/span[1]")).click();
+	    driver.findElement(By.xpath("/html/body/app-root/app-home/div[1]/app-header/div[2]/div[2]/div[2]/nav/ul/li[7]/ul/li[3]/ul/li[2]/a/span")).click();
+
+
+
+		driver.switchTo().newWindow(WindowType.WINDOW);
+		Set<String> allsessionids5=driver.getWindowHandles();
+		Iterator<String> id= allsessionids5.iterator();
+		String firstsession=id.next();
+		String secondsession=id.next();
+		driver.switchTo().window(secondsession);
+	    driver.get("https://www.irctctourism.com/accommodation");
+
+		  WebElement product2= driver.findElement(By.xpath("/html/body/app-root/accommodation/div[2]/div[2]/div/form/div[1]/select"));
+	      Select option2 = new  Select(product2);
+	      option2.selectByVisibleText("JAIPUR");
+	      WebElement product3= driver.findElement(By.xpath("/html/body/app-root/accommodation/div[2]/div[2]/div/form/div[2]/select"));
+	      Select option3 = new  Select(product3);
+	      option3.selectByVisibleText("IRCTC EXECUTIVE LOUNGE JAIPUR");
+	      WebElement product4= driver.findElement(By.xpath("/html/body/app-root/accommodation/div[2]/div[2]/div/form/div[3]/select"));
+	      Select option4 = new  Select(product4);
+	      option4.selectByVisibleText("4");
+	      driver.findElement(By.xpath("/html/body/app-root/accommodation/div[2]/div[2]/div/form/div[4]/input")).click();
+	      driver.findElement(By.xpath("/html/body/app-root/accommodation/div[2]/div[2]/div/form/div[4]/div/div/table/tbody/tr[5]/td[5]/span")).click();
+	      WebElement product5= driver.findElement(By.xpath("/html/body/app-root/accommodation/div[2]/div[2]/div/form/div[5]/select"));
+	      Select option5 = new  Select(product5);
+	      option5.selectByIndex(6);
+	      WebElement time= driver.findElement(By.xpath("/html/body/app-root/accommodation/div[2]/div[2]/div/form/div[6]/select"));
+	      Select time1 = new Select(time);
+	      time1.selectByIndex(6);
+
+
+	}
+
+ 
+
+}

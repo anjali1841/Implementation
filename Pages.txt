@@ -1,0 +1,961 @@
+gemini_Nz
+   src/test/java
+          com.framework.pages
+                  1.ConveyancePage.java
+------------------------------------------------------------------------
+                                                   package com.framework.pages;
+                                                                          import com.framework.testng.api.base.ProjectSpecificMethods;
+                                                                            public class ConveyancePage extends ProjectSpecificMethods {}
+=====================================================================
+          
+                  2.CustomerMatchingPage.java
+-------------------------------------------------------------
+                                                  package com.framework.pages;
+                                                                        import com.framework.testng.api.base.ProjectSpecificMethods;
+                                                                        public class CustomerMatchingPage extends ProjectSpecificMethods {} 
+=============================================================
+
+                    3.EntryBuildPage.java
+----------------------------------------------------
+                                               package com.framework.pages;
+                                                                     import com.framework.testng.api.base.ProjectSpecificMethods;
+                                                                     public class EntryBuildPage extends ProjectSpecificMethods {}
+=======================================
+                     4.GeminiHomePage.java
+--------------------------------------------------
+                                                   package com.framework.pages;
+                                                                    import javax.management.relation.Role;
+                                                                    import org.openqa.selenium.NoSuchElementException;
+                                                                    import com.framework.selenium.api.design.Locators;
+                                                                    import com.framework.testng.api.base.ProjectSpecificMethods;
+                                                                     public class Gemini_HomePage extends ProjectSpecificMethods {
+                                                                     public Gemini_HomePage select_Country_Role(String countryCode,String role) throws Exception {
+		                           boolean country = false;
+		                           try {
+			                 waitTillElementVisible(locateElement(Locators.XPATH, "//input[@id='fx-gn-countryFlag-"+countryCode+"']"));
+			                  country =verifyDisplayed(locateElement(Locators.XPATH, "//input[@id='fx-gn-countryFlag-"+countryCode+"']"));
+			                  reportStep("Searching for country =>"+countryCode, "Pass", true);
+			                  reportStep("Searching for country =>"+role, "Pass", true);
+			       try {
+				if (country) {
+					String[] splitRole = role.split(":");
+					click(locateElement(Locators.XPATH, "//select[@id='fx-gn-role-dropdown-"+countryCode+"']"));
+					selectDropDownUsingValue(locateElement(Locators.XPATH, "//select[@id='fx-gn-role-dropdown-"+countryCode+"']"), splitRole[1]);
+					waitTillElementVisible(locateElement(Locators.XPATH, "//button[@id='btnContextSelection']"));
+					click(locateElement(Locators.XPATH, "//button[@id='btnContextSelection']"));
+				}
+			                      } catch (NoSuchElementException nse) {
+				reportStep("Unable to select the role in gemini application", "Fail", true);
+				throw new Exception();		
+			                }
+		                                       } catch (NoSuchElementException e) {
+			                            reportStep("Country selection is not available on the home page", "Fail", true);
+			                            e.printStackTrace();
+		                                          }
+		                                             return new Gemini_HomePage();
+	                                                          }
+                                                                              }
+=============================================================================
+                                       5.LoginPage.java
+--------------------------------------------------------------
+                                                                   package com.framework.pages;
+                                                                                            import java.io.FileInputStream;
+                                                                                            import java.io.FileNotFoundException;
+                                                                                             import java.io.IOException;
+				       import java.util.Properties;
+				       import org.openqa.selenium.WebElement;
+				       import com.framework.selenium.api.design.Locators;
+				        import com.framework.testng.api.base.ProjectSpecificMethods;
+				public class LoginPage extends ProjectSpecificMethods {
+				public LoginPage enterUserName() throws InterruptedException {
+			try {
+			type(locateElement(Locators.XPATH, "//input[@autocomplete='username']|//input[@id='okta-signin-username']"), getValueFromConfig("userName"));
+			reportStep("Successfully entered user name : " + getValueFromConfig("userName"), "Pass",true);
+		                            } catch (Exception e) {
+			reportStep("Unable to enter user name : " + getValueFromConfig("userName"), "Fail",true);
+		                    e.printStackTrace();	
+		 	}
+			return this;
+			}
+			public LoginPage enterPassword() throws InterruptedException {
+			try {
+			type(locateElement(Locators.XPATH, "//input[@autocomplete='current-password']|//input[@id='okta-signin-password']"),DecodePassword(getValueFromConfig("password")));
+			reportStep("Successfully entered Password", "Pass",true);
+			} catch (Exception e) {
+			reportStep("Unable to enter Password", "Fail",true);
+			e.printStackTrace();
+			}
+			return this;
+			}
+			public LoginPage clickSubmit() throws FileNotFoundException, IOException {
+			try {
+			click(locateElement(Locators.XPATH, "//input[@value='Sign in']|//input[@value='Sign In']"));
+			reportStep("Clicked login button", "Pass",true);
+			} catch (Exception e) {
+			reportStep("Failed to click login button", "Fail",true);
+			e.printStackTrace();
+			}
+			return this;
+			}
+			public LoginPage userAuthentication() throws FileNotFoundException, IOException {
+			try {			
+			enterUserName();
+			enterPassword();
+			clickSubmit();		
+			} catch (Exception e) {
+			reportStep("Failed to click login button", "Fail",true);
+			e.printStackTrace();
+			}
+			return this;	
+			}
+			public Gemini_HomePage OktaAuthentication() throws FileNotFoundException, IOException {
+			try {
+			click(locateElement(Locators.XPATH, "//input[@value='Send Push']"));	
+			/*click(locateElement(Locators.XPATH, "//a[contains(text(),'enter code')]"));			
+			pause(10000);
+			click(locateElement(Locators.XPATH, "//a[contains(text(),'Verify')]"));
+			pause(2000);*/
+			Thread.sleep(10000);
+			reportStep("Successfully Passed Okta Authentication", "Pass",true);
+			} catch (Exception e) {
+			reportStep("Okta Authentication Failed", "Fail",true);
+			e.printStackTrace();		
+			}
+			return new Gemini_HomePage();
+			}}
+======================================
+                                 6.ManifestcheckPage.java
+-------------------------------------------------------------
+                                                               package com.framework.pages;
+
+import static org.testng.Assert.assertEquals;
+
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map.Entry;
+import org.openqa.selenium.By;
+import org.openqa.selenium.ElementClickInterceptedException;
+import org.openqa.selenium.ElementNotInteractableException;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import com.framework.selenium.api.design.Locators;
+import com.framework.testng.api.base.ProjectSpecificMethods;
+
+public class ManifestCheckPage extends ProjectSpecificMethods {
+	
+	public static String retrieveValue,tValue="";
+
+	public ManifestCheckPage select_competency(String CompetencyName) throws Exception {
+		waitTillElementVisible(locateElement(Locators.XPATH, "//li[@id='" + CompetencyName + "']"));
+		click(locateElement(Locators.XPATH, "//li[@id='" + CompetencyName + "']"));
+		reportStep(CompetencyName + " competency is activated", "Pass");
+		return new ManifestCheckPage();
+	}
+
+	public ManifestCheckPage click_TeamList() throws Exception {
+		waitTillElementVisible(locateElement(Locators.XPATH, "//a[@id='teamlist']"));
+		click(locateElement(Locators.XPATH, "//a[@id='teamlist']"));
+		reportStep("Selected team list from the application", "Pass");
+		return new ManifestCheckPage();
+	}
+
+	public ManifestCheckPage click_TeamLeaderList() throws Exception {
+		waitTillElementVisible(locateElement(Locators.XPATH, "//a[@id='teamleaderlist']"));
+		click(locateElement(Locators.XPATH, "//a[@id='teamleaderlist']"));
+		reportStep("Selected team leader list from the application", "Pass");
+		return new ManifestCheckPage();
+	}
+
+	public ManifestCheckPage click_UserList() throws Exception {
+		if(checkElementIsVisible(locateElement(Locators.XPATH, "//a[@id='userlist']"))) {
+			waitTillElementVisible(locateElement(Locators.XPATH, "//a[@id='userlist']"));
+			click(locateElement(Locators.XPATH, "//a[@id='userlist']"));
+			reportStep("Selected User list from the application", "Pass");
+		}
+		else
+		{
+			reportStep("Unable to select user list from the application", "Fail");
+		}
+		return new ManifestCheckPage();
+	}
+
+	public ManifestCheckPage select_ArrivalDate() throws Exception {
+		int count = 0;
+		Thread.sleep(5000);
+		for (WebElement eachColumnName : locateElements(Locators.XPATH, "((//datatable-header-cell/div/div)/table)")) {
+			System.out.println("HeaderName:" + eachColumnName.getText());
+			count += 1;
+			if (eachColumnName.getText().equalsIgnoreCase("Arrival Date")) {
+				click(locateElement(Locators.XPATH,
+						"(((//datatable-header-cell/div/div)/table)//following-sibling::a)[" + count + "]"));
+				click(locateElement(Locators.XPATH, "//input[@name='filterCalendar']"));
+				for (int i = 1; i <= 2; i++) {
+					click(locateElement(Locators.XPATH,
+							"(//div[contains(@class,\"datepicker-group\")]/following::div[1]//span)[1]"));
+				}
+				click(locateElement(Locators.XPATH, "//span//button[@class='close-icon']"));
+				break;
+			}
+
+		}
+		return this;
+	}
+
+	public ManifestCheckPage retrieve_AWBNo() throws Throwable {
+		String value = null;
+		boolean awbNo = true;
+		boolean ciflg = true;
+		int i, j = 0;
+		int pos1 = 0;
+		int pos2 = 0;
+		Thread.sleep(5000);
+		List<WebElement> tableHeader = locateElements(Locators.XPATH, "((//datatable-header-cell/div/div)/table)");
+		for (i = 1; i < tableHeader.size(); i++) {
+			String headerval = getDriver()
+					.findElement(By.xpath("((//datatable-header-cell/div/div)/table)[" + i + "]/tr/th[1]/span"))
+					.getText();
+
+			// Position of AWB # from the table
+			if (awbNo && headerval.trim().equalsIgnoreCase("AWB Number")) {
+				// i = i + 2;
+				Thread.sleep(2000);
+				/*
+				 * value = getDriver() .findElement(By.xpath(
+				 * "(//datatable-body-cell[contains(@class,'datatable-body-cell')])[" + i +
+				 * "]/div/span")) .getText();
+				 */
+				System.out.println("Position of AWB # is: " + i);
+				pos1 = i;
+				// i=i-2;
+				awbNo = false;
+			}
+			// Position of CI Flag from the table
+
+			if (ciflg && headerval.trim().equalsIgnoreCase("CI Flag")) {
+				// j = i + 2;
+				Thread.sleep(2000);
+				/*
+				 * value = getDriver() .findElement(By.xpath(
+				 * "(//datatable-body-cell[contains(@class,'datatable-body-cell')])[" + i +
+				 * "]/div/span")) .getText();
+				 */
+				// pos2=j;
+				pos2 = i;
+				System.out.println("Position of CI Flag # is: " + i);
+				// j=i-2;
+				ciflg = false;
+			}
+			if (awbNo && ciflg == false)
+				break;
+		}
+
+		List<WebElement> totalDataRows = locateElements(Locators.XPATH,
+				"(//datatable-body[@class='datatable-body']//following::datatable-row-wrapper)");
+		for (int k = 1; k < totalDataRows.size(); k++) {
+			
+			/*System.out
+			.println(
+					locateElement(Locators.XPATH,
+							"(//datatable-body[@class='datatable-body']//following::datatable-row-wrapper)[" + k
+							+ "]/datatable-body-row/div[2]/datatable-body-cell[" + pos2 + "]")
+					.getText());*/
+			if (locateElement(Locators.XPATH,
+					"(//datatable-body[@class='datatable-body']//following::datatable-row-wrapper)[" + k
+							+ "]/datatable-body-row/div[2]/datatable-body-cell[" + pos2 + "]").getText()
+									.length() == 0) {
+				click(locateElement(Locators.XPATH,
+						"(//datatable-body[@class='datatable-body']//following::datatable-row-wrapper)[" + k
+								+ "]/datatable-body-row/div[2]/datatable-body-cell[" + pos1 + "]"));
+				value = locateElement(Locators.XPATH,
+						"(//datatable-body[@class='datatable-body']//following::datatable-row-wrapper)[" + k
+								+ "]/datatable-body-row/div[2]/datatable-body-cell[" + pos1 + "]").getText();
+				retrieveValue = value;
+				System.out.println("Fetched AWB # is:" + value);
+			break;
+			}
+		}
+		reportStep("Successfully retrieved value from the application => " + value, "Pass");
+		return new ManifestCheckPage();
+	}
+	
+	public ManifestCheckPage writeIntoExcelSheet(String sheetName, String columnName, int rowIndex) throws InterruptedException, IOException {
+		writeExcelValue(sheetName, columnName, rowIndex, ManifestCheckPage.retrieveValue);
+		reportStep("Successfully written value into excel sheet => " + ManifestCheckPage.retrieveValue, "Pass");
+		return new ManifestCheckPage();
+	}
+
+	public ManifestCheckPage disable_Headercolumns() throws InterruptedException {
+		waitTillElementVisible(locateElement(Locators.XPATH, "//div[@id='column-preference-icon']"));
+		clickElementUsingJavaScript(locateElement(Locators.XPATH, "//div[@id='column-preference-icon']"));
+		List<WebElement> modal_window_disabled = locateElements(Locators.XPATH,
+				"((//div[@class='modal-content']//following::div[contains(@class,'drag-and-drop-list')]//following::genius-toggle-switch)[@ng-reflect-is-toggle-switched='true'])");
+		for (int i = 1; i < modal_window_disabled.size(); i++) {
+			getDriver().findElement(By.xpath(
+					"((//div[@class='modal-content']//following::div[contains(@class,'drag-and-drop-list')]//following::genius-toggle-switch)[@ng-reflect-is-toggle-switched='true'])["
+							+ i + "]//following-sibling::label/span"))
+					.click();
+		}
+		waitTillElementVisible(locateElement(Locators.XPATH, "//button[@title='Save']"));
+		click(locateElement(Locators.XPATH, "//button[@title='Save']"));
+		reportStep("Disable headers from the web table", "Pass");
+		return new ManifestCheckPage();
+	}
+
+	public ManifestCheckPage enable_HeaderColumns() throws InterruptedException {
+		waitTillElementVisible(locateElement(Locators.XPATH, "//div[@id='column-preference-icon']"));
+		clickElementUsingJavaScript(locateElement(Locators.XPATH, "//div[@id='column-preference-icon']"));
+		List<WebElement> modal_window_enabled = locateElements(Locators.XPATH,
+				"((//div[@class='modal-content']//following::div[contains(@class,'drag-and-drop-list')]//following::genius-toggle-switch)[@ng-reflect-is-toggle-switched='false'])");
+		String var[] = { "CI Flag","Sanity Group", "Currency", "Clearance Scheme", "Duty Bill", "Clearance Status", "Teams","Shipment Manifest Status" };
+		HashMap<Integer, String> map = new HashMap<>();
+		for (int i = 1; i < modal_window_enabled.size(); i++) {
+			map.put(i, getDriver().findElement(By.xpath(
+					"(//div[@class='modal-content']//following::div[contains(@class,'drag-and-drop-list')]//following::genius-toggle-switch)["
+							+ i + "]//following-sibling::label/span"))
+					.getText());
+		}
+		System.out.println(map);
+		for (Entry<Integer, String> entrySet : map.entrySet()) {
+			for (int j = 0; j <= var.length - 1; j++) {
+				if (var[j].trim().equalsIgnoreCase(entrySet.getValue())) {
+					getDriver().findElement(By.xpath(
+							"((//div[@class='modal-content']//following::div[contains(@class,'drag-and-drop-list')]//following::genius-toggle-switch)[@ng-reflect-is-toggle-switched='false'])["
+									+ (entrySet.getKey() - 1) + "]//following-sibling::label/span"))
+							.click();
+					reportStep("Enabled requird headers from the web table => " + var[j].trim(), "Pass");
+					break;
+				}
+			}
+
+		}
+		waitTillElementVisible(locateElement(Locators.XPATH, "//button[@title='Save']"));
+		click(locateElement(Locators.XPATH, "//button[@title='Save']"));
+		return new ManifestCheckPage();
+	}
+
+	public ManifestCheckPage clickFilterIcon(String columnName) throws InterruptedException {
+		try {
+			waitTillElementVisible(locateElement(Locators.XPATH, "(//span[text()='" + columnName + "']/../..//a)[1]"));
+			click(locateElement(Locators.XPATH, "(//span[text()='" + columnName + "']/../..//a)[1]"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new ManifestCheckPage();
+	}
+
+	public ManifestCheckPage setFilterValueFromSheet(String sheetName, String columnName, int rowIndex)
+			throws InterruptedException, IOException {
+		try {
+			checkElementIsVisible(locateElement(Locators.XPATH, "//input[@name='filterTxtBox']"));
+			//waitTillElementVisible(locateElement(Locators.XPATH, "//input[@name='filterTxtBox']"));
+			type(locateElement(Locators.XPATH, "//input[@name='filterTxtBox']"),
+					readExcelValue(sheetName, columnName, rowIndex));
+			reportStep(
+					"Successfully read the values from excel file:" + readExcelValue(sheetName, columnName, rowIndex),
+					"Pass");
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return new ManifestCheckPage();
+	}
+
+	public ManifestCheckPage assignToMe() {
+		try {
+			waitTillElementVisible(locateElement(Locators.XPATH, "//a[@id='add-assigntome']"));
+			click(locateElement(Locators.XPATH, "//a[@id='add-assigntome']"));
+			reportStep("Successfully assigned the shipment", "Pass");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new ManifestCheckPage();
+	}
+
+	public ManifestCheckPage search_user() throws Throwable {
+		locateElement(Locators.XPATH, "//span[@class='user-name']").getText();
+		System.out.println("User Name: " + locateElement(Locators.XPATH, "//span[@class='user-name']").getText());
+		waitTillElementVisible(locateElement(Locators.XPATH, "//input[@name='memberId']"));
+		scrollIntoViewUsingJavaScript(locateElement(Locators.XPATH, "//input[@name='memberId']"));
+		Thread.sleep(3000);
+		WebElement memId = locateElement(Locators.XPATH, "//input[@name='memberId']");
+		click(locateElement(Locators.XPATH, "//input[@name='memberId']"));
+		String[] splitName = locateElement(Locators.XPATH, "//span[@class='user-name']").getText().split(" ");
+		type(memId, splitName[0].trim());
+		return new ManifestCheckPage();
+	}
+
+	public ManifestCheckPage selectUser_Submit() throws Throwable {
+		scrollIntoViewUsingJavaScript(
+				locateElement(Locators.XPATH, "(//div[contains(@id,'team-leader-user-result')])//p"));
+		click(locateElement(Locators.XPATH, "(//div[contains(@id,'team-leader-user-result')])//p"));
+		Thread.sleep(3000);
+		waitTillElementVisible(locateElement(Locators.XPATH, "(//button[@title='Save'])"));
+		clickElementUsingJavaScript(locateElement(Locators.XPATH, "(//button[@title='Save'])"));
+		return new ManifestCheckPage();
+	}
+
+	public ManifestCheckPage assignTo() {
+		try {
+			waitTillElementVisible(locateElement(Locators.ID, "add-assign-to"));
+			click(locateElement(Locators.ID, "add-assign-to"));
+			reportStep("Successfully clicked assigned To from team leader list", "Pass");
+			// waitTillElementInVisible(locateElement(Locators.XPATH,
+			// "//div[contains(@class,'page-spinner')]"), 15);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new ManifestCheckPage();
+	}
+
+	public ManifestCheckPage select_Team(String team) throws InterruptedException {
+		List<WebElement> Teams_Lst_Name = locateElements(Locators.XPATH,
+				"(//div[contains(@class,'genius-grid-list-buttons-container')])[1]/"
+						+ "genius-team-toggle-switch/div/div[2]//following-sibling::genius-toggle-switch");
+		for (int i = 0; i < Teams_Lst_Name.size(); i++) {
+			System.out.println("Team name- toggle enablement :"
+					+ Teams_Lst_Name.get(i).getAttribute("ng-reflect-is-toggle-switched"));
+			if (!Boolean.valueOf(Teams_Lst_Name.get(i).getAttribute("ng-reflect-is-toggle-switched"))) {
+				waitTillElementVisible(locateElement(Locators.XPATH,
+						"((//div[contains(@class,'genius-grid-list-buttons-container')])[1]/genius-team-toggle-switch/div/div[2]//following-sibling::genius-toggle-switch)["
+								+ i + "]//following-sibling::label/span"));
+
+				WebElement teamName = locateElement(Locators.XPATH,
+						"((//div[contains(@class,'genius-grid-list-buttons-container')])[1]/genius-team-toggle-switch/div/div[2]//following-sibling::genius-toggle-switch)["
+								+ i + "+1" + "]//following-sibling::label/span");
+				String[] splitTeam = teamName.getText().split(" ");
+				if (splitTeam[0].trim().contains(team)) {
+					clickElementUsingJavaScript(locateElement(Locators.XPATH,
+							"((//div[contains(@class,'genius-grid-list-buttons-container')])[1]/genius-team-toggle-switch/div/div[2]//following-sibling::genius-toggle-switch)["
+									+ i + "+1" + "]//following::input"));
+					Thread.sleep(5000);
+					break;
+				}
+			}
+
+		}
+		return new ManifestCheckPage();
+	}
+
+	public ManifestCheckPage filter_CIFlag(String team) throws InterruptedException {
+		List<WebElement> Teams_Lst_Name = locateElements(Locators.XPATH,
+				"(//div[contains(@class,'genius-grid-list-buttons-container')])[1]/"
+						+ "genius-team-toggle-switch/div/div[2]//following-sibling::genius-toggle-switch");
+		for (int i = 0; i < Teams_Lst_Name.size(); i++) {
+			System.out.println("Team name- toggle enablement :"
+					+ Teams_Lst_Name.get(i).getAttribute("ng-reflect-is-toggle-switched"));
+			if (!Boolean.valueOf(Teams_Lst_Name.get(i).getAttribute("ng-reflect-is-toggle-switched"))) {
+				waitTillElementVisible(locateElement(Locators.XPATH,
+						"((//div[contains(@class,'genius-grid-list-buttons-container')])[1]/genius-team-toggle-switch/div/div[2]//following-sibling::genius-toggle-switch)["
+								+ i + "]//following-sibling::label/span"));
+
+				WebElement teamName = locateElement(Locators.XPATH,
+						"((//div[contains(@class,'genius-grid-list-buttons-container')])[1]/genius-team-toggle-switch/div/div[2]//following-sibling::genius-toggle-switch)["
+								+ i + "+1" + "]//following-sibling::label/span");
+				String[] splitTeam = teamName.getText().split(" ");
+				if (splitTeam[0].trim().contains(team)) {
+					clickElementUsingJavaScript(locateElement(Locators.XPATH,
+							"((//div[contains(@class,'genius-grid-list-buttons-container')])[1]/genius-team-toggle-switch/div/div[2]//following-sibling::genius-toggle-switch)["
+									+ i + "+1" + "]//following::input"));
+					break;
+				}
+			}
+
+		}
+		return new ManifestCheckPage();
+	}
+
+	public ManifestCheckPage filter_TableColumns(String ColumnName, String FilterValue, int Value)
+			throws InterruptedException, IOException {
+		clickFilterIcon(ColumnName);
+		try {
+			if (FilterValue.trim().equalsIgnoreCase("Blank Cells"))
+				selectDropDownUsingText(locateElement(Locators.XPATH, "//select[@class='manageSelectfilter']"),
+						FilterValue);
+			else if(FilterValue.trim().equalsIgnoreCase("Equals"))
+				selectDropDownUsingText(locateElement(Locators.XPATH, "//select[@class='manageSelectfilter']"),
+						FilterValue);
+			else if(FilterValue.trim().equalsIgnoreCase("Contains"))
+				selectDropDownUsingText(locateElement(Locators.XPATH, "//select[@class='manageSelectfilter']"),
+						FilterValue);
+			else {
+				selectDropDownUsingText(locateElement(Locators.XPATH, "//select[@class='manageSelectfilter']"),
+						FilterValue);
+				type(locateElement(Locators.XPATH, "//input[@name='filterTxtBox']"), Integer.toString(Value));
+			}
+
+		} catch (ElementNotInteractableException e) {
+			reportStep("Error: "+e.getMessage(), "Fail");
+		}
+		return new ManifestCheckPage();
+	}
+
+	public ManifestCheckPage close_FilterIcon() throws InterruptedException, IOException {
+		waitTillElementVisible(locateElement(Locators.XPATH, "//span//button[@class='close-icon']"));
+		click(locateElement(Locators.XPATH, "//span//button[@class='close-icon']"));
+		return new ManifestCheckPage();
+	}
+
+	public ManifestCheckPage click_Upload_FloatingPanel(String value) throws InterruptedException {
+		try {
+			if (Boolean.valueOf(value)) {
+				waitTillElementVisible(
+						locateElement(Locators.XPATH, "(//div[@class='document-upload-conatiner']/div)[1]"));
+				mouseHover(locateElement(Locators.XPATH, "(//div[@class='document-upload-conatiner']/div)[1]"));
+				click(locateElement(Locators.XPATH, "(//div[@class='document-upload-conatiner']/div)[1]"));
+				reportStep("Enabled upload option from floating panel", "Pass");
+			} else {
+				int img_panel = locateElements(Locators.XPATH, "(//ul[contains(@class,'img-panel')]/li)").size();
+				for (int i = 1; i <= img_panel; i++) {
+					if (locateElement(Locators.XPATH, "(//ul[contains(@class,'img-panel')]/li)[" + i + "]/a")
+							.getAttribute("ng-reflect-ng-class").contains("upload-icon")) {
+						click(locateElement(Locators.XPATH, "(//ul[contains(@class,'img-panel')]/li)[" + i + "]/a"));
+						break;
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new ManifestCheckPage();
+	}
+
+	public ManifestCheckPage select_Location_documentType(String location, String type)
+			throws InterruptedException, AWTException {
+		/*
+		  try { waitTillElementVisible(locateElement(Locators.XPATH,
+		  "//div[contains(@class,'customer-invoice-page-spinner')]")); Actions action =
+		  new Actions(getDriver()); Thread.sleep(2000);
+		  action.keyDown(Keys.CONTROL).click(locateElement(Locators.XPATH,
+		  "//div[contains(@class,'shipment-document-upload_header')]/span")).keyUp(Keys
+		  .CONTROL).build() .perform(); } catch (NoSuchElementException |
+		  ElementNotInteractableException | TimeoutException e) { e.printStackTrace();
+		  }
+		 */
+		waitTillElementVisible(locateElement(Locators.XPATH, "//select[@name='location']"));
+		click(locateElement(Locators.XPATH, "//select[@name='location']"));
+		selectUsingVisibleText(locateElement(Locators.XPATH, "//select[@name='location']"), location);
+		waitTillElementVisible(locateElement(Locators.XPATH, "//select[@name='documentType']"));
+		click(locateElement(Locators.XPATH, "//select[@name='documentType']"));
+		selectUsingVisibleText(locateElement(Locators.XPATH, "//select[@name='documentType']"), type);
+		reportStep("successfully selected location as =>" + location + " and document type as =>" + type, "Pass");
+		return new ManifestCheckPage();
+	}
+
+	public ManifestCheckPage uploadFile_FloatingPanel() throws InterruptedException, AWTException {
+		String path;
+		clickElementUsingJavaScript(locateElement(Locators.XPATH, "(//div[contains(@class,'drop-zone')])[2]/input"));
+		path = System.getProperty("user.dir") + "\\Documents\\FedEx_Image_Reporting.pdf";
+		System.out.println(path);
+		StringSelection contents = new StringSelection(path);
+		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(contents, null);
+		Robot r = new Robot();
+		Thread.sleep(5000);
+		r.keyPress(KeyEvent.VK_CONTROL);
+		r.keyPress(KeyEvent.VK_V);
+		r.keyRelease(KeyEvent.VK_CONTROL);
+		r.keyRelease(KeyEvent.VK_V);
+		Thread.sleep(5000);
+		r.keyPress(KeyEvent.VK_ENTER);
+		r.keyRelease(KeyEvent.VK_ENTER);
+		Thread.sleep(3000);
+		waitTillElementVisible(locateElement(Locators.XPATH, "(//button[@title='Save'])"));
+		clickElementUsingJavaScript(locateElement(Locators.XPATH, "(//button[@title='Save'])"));
+		Thread.sleep(5000);
+		reportStep("Sucessfully uploaded file into the floating panel", "Pass");
+		return new ManifestCheckPage();
+	}
+
+	public ManifestCheckPage Validate_CI_Flag(String value) throws Throwable {
+		List<WebElement> headerSize = locateElements(Locators.XPATH, "((//datatable-header-cell/div/div)/table)");
+		System.out.println("Header Size : " + headerSize.size());
+		for (int i = 1; i < headerSize.size(); i++) {
+//			String headerval = getDriver()
+//					.findElement(By.xpath("((//datatable-header-cell/div/div)/table)[" + i + "]/tr/th[1]/span"))
+//					.getText();
+
+			String headerval = locateElement(Locators.XPATH,
+					"((//datatable-header-cell/div/div)/table)[" + i + "]/tr/th[1]/span").getText();
+			if (headerval.trim().equalsIgnoreCase("CI Flag")) {
+				i = i + 2;
+				String ci = locateElement(Locators.XPATH,
+						"(//datatable-body-cell[contains(@class,'datatable-body-cell')])[" + i + "]/div/span")
+								.getText();
+//				
+//				String ci = getDriver()
+//						.findElement(By.xpath(
+//								"(//datatable-body-cell[contains(@class,'datatable-body-cell')])[" + i + "]/div/span"))
+//						.getText();
+				assertEquals(value, ci);
+				reportStep("Successfully activated the CI flag for the shipment", "Pass");
+			}
+
+		}
+		return new ManifestCheckPage();	
+	}
+
+	public ManifestCheckPage click_btn_modify_Clearance_Scheme() throws InterruptedException, IOException {
+		waitTillElementVisible(locateElement(Locators.XPATH, "//button[@id='modify']"));
+		click(locateElement(Locators.XPATH, "//button[@id='modify']"));
+		return new ManifestCheckPage();
+	}
+
+	public ManifestCheckPage set_clearance_scheme(String value) throws InterruptedException, IOException {
+
+		List<WebElement> locateElements = locateElements(Locators.XPATH, "//form[@id='selectSchemeForm']/ul/li");
+		waitTillElementVisible(locateElement(Locators.XPATH, "//form[@id='selectSchemeForm']/ul/li"));
+		for (int i = 1; i < locateElements.size(); i++) {
+
+			if (!(locateElement(Locators.XPATH, "//form[@id='selectSchemeForm']/ul/li[" + i + "]/span[2]").getText()
+					.equalsIgnoreCase(value))
+					&& !(locateElement(Locators.XPATH, "//form[@id='selectSchemeForm']/ul/li[" + i + "]/span[2]")
+							.getText().equalsIgnoreCase("s10"))) {
+				waitTillElementVisible(
+						locateElement(Locators.XPATH, "//form[@id='selectSchemeForm']/ul/li[" + i + "]/span[2]"));
+				clickElementUsingJavaScript(
+						locateElement(Locators.XPATH, "//form[@id='selectSchemeForm']/ul/li[" + i + "]/span[2]"));
+				System.out
+						.print(locateElement(Locators.XPATH, "//form[@id='selectSchemeForm']/ul/li[" + i + "]/span[2]")
+								.getText());
+				;
+				waitTillElementVisible(locateElement(Locators.XPATH, "//button[@id='selectSchemeConfirmButton']"));
+				click(locateElement(Locators.XPATH, "//button[@id='selectSchemeConfirmButton']"));
+				waitTillElementVisible(locateElement(Locators.XPATH, "//button[@id='confirm']"));
+				click(locateElement(Locators.XPATH, "//button[@id='confirm']"));
+				Thread.sleep(5000);
+				break;
+			}
+		}
+		return new ManifestCheckPage();
+	}
+
+	public ManifestCheckPage click_global_search_icon() throws InterruptedException, IOException {
+		waitTillElementVisible(locateElement(Locators.ID, "fx-gn-header-search-icon"));
+		click(locateElement(Locators.ID, "fx-gn-header-search-icon"));
+		Thread.sleep(5000);
+		return new ManifestCheckPage();
+	}
+
+	public ManifestCheckPage enter_shipment_global_search(String value) throws InterruptedException, IOException {
+		waitTillElementVisible(locateElement(Locators.ID, "fx-gn-shipment-search-value"));
+		type(locateElement(Locators.ID, "fx-gn-shipment-search-value"), value);
+		return new ManifestCheckPage();
+	}
+
+	public ManifestCheckPage click_shipment_search() throws InterruptedException, IOException {
+		waitTillElementVisible(locateElement(Locators.XPATH, "(//span[contains(@class,'shipment-result')])[1]"));
+		click(locateElement(Locators.XPATH, "(//span[contains(@class,'shipment-result')])[1]"));
+		return new ManifestCheckPage();
+	}
+	
+	public ManifestCheckPage retrieve_application_value(String val) throws Throwable {
+		String value = null;
+		int i= 0;
+		Thread.sleep(5000);
+		List<WebElement> tableHeader = locateElements(Locators.XPATH, "((//datatable-header-cell/div/div)/table)");
+		for (i = 1; i < tableHeader.size(); i++) {
+			String headerval = getDriver()
+					.findElement(By.xpath("((//datatable-header-cell/div/div)/table)[" + i + "]/tr/th[1]/span"))
+					.getText();
+
+			// Position of AWB # from the table
+			if (headerval.trim().equalsIgnoreCase(val)) {
+				Thread.sleep(2000);			
+				System.out.println("Position of "+val+" :" + i);
+				break;
+			}
+		}
+		List<WebElement> totalDataRows = locateElements(Locators.XPATH,
+				"(//datatable-body[@class='datatable-body']//following::datatable-row-wrapper)");
+		for (int k = 1; k < totalDataRows.size(); k++) {
+			if (locateElement(Locators.XPATH,
+					"(//datatable-body[@class='datatable-body']//following::datatable-row-wrapper)[" + k
+							+ "]/datatable-body-row/div[2]/datatable-body-cell[" + i + "]").getText()
+									.length()> 0) {
+				click(locateElement(Locators.XPATH,
+						"(//datatable-body[@class='datatable-body']//following::datatable-row-wrapper)[" + k
+								+ "]/datatable-body-row/div[2]/datatable-body-cell[" + i + "]"));
+				value = locateElement(Locators.XPATH,
+						"(//datatable-body[@class='datatable-body']//following::datatable-row-wrapper)[" + k
+								+ "]/datatable-body-row/div[2]/datatable-body-cell[" + i + "]").getText();
+				System.out.println("Fetched value # is:" + value);
+			break;
+			}
+		}
+		reportStep("Successfully retrieved value from the application => " + value, "Pass");
+		return new ManifestCheckPage();
+	}
+	
+	
+	public  String retrieve_glblSrch_application_value(String header) throws InterruptedException{
+		int i;
+		Thread.sleep(3000);
+		List<WebElement> THeaderVal = locateElements(Locators.XPATH, "(//genius-data-grid-table//following::datatable-header)[1]/div/div[2]//following::table");
+		
+		for(i=1;i<THeaderVal.size();i++) {
+			String text = locateElement(Locators.XPATH, "(((//genius-data-grid-table//following::datatable-header)[1]/div/div[2]//following::table)["+i+"]//span)[1]").getText();
+			if(header.equalsIgnoreCase(text)){
+				System.out.println("Position of an element is:"+i);
+				break;
+			}
+		}		
+		List<WebElement> values = locateElements(Locators.XPATH, "(//genius-data-grid-table)//following::datatable-body");
+		String tValue="";
+		for(int j=1;j<values.size()-1;j++) {
+			tValue = locateElement(Locators.XPATH, "(((//genius-data-grid-table)//following::datatable-body)[1]//following::datatable-body-row["+j+"]/div[2])[1]/datatable-body-cell["+i+"]//span").getText();
+			System.out.println(tValue);
+			break;
+		}	
+		return tValue;
+
+	}
+	
+	public ManifestCheckPage click_EditIcon() throws InterruptedException, IOException {
+		if(checkElementIsVisible(locateElement(Locators.XPATH, "//button[@id='edit-shipment-details-icon']"))) {
+		click(locateElement(Locators.XPATH, "//button[@id='edit-shipment-details-icon']"));
+		reportStep("Shipment edit details icon is clicked", "Pass");
+		}
+		else
+		{
+			reportStep("Unable to click edit details icon in MF Competency", "Fail");	
+		}
+		return new ManifestCheckPage();
+	}
+	
+	public ManifestCheckPage enter_Shipment_weight(String weight) throws InterruptedException, IOException {
+		type(locateElement(Locators.XPATH, "//input[@id='fx-gn-edit-shipment-weight']"), weight);
+		reportStep("Shipment weight is:"+weight, "Pass");
+		return new ManifestCheckPage();
+	}
+	
+	public ManifestCheckPage enter_Shipment_value(String value) throws InterruptedException, IOException {
+		type(locateElement(Locators.XPATH, "//input[@id='fx-gn-edit-shipment-value']"), value);
+		reportStep("Shipment value is:"+value, "Pass");
+		return new ManifestCheckPage();
+	}
+	
+	public ManifestCheckPage enter_Shipment_phoneNo(String phNo) throws InterruptedException, IOException {
+		type(locateElement(Locators.XPATH, "//input[@id='fx-gn-contact-detail-phoneNumber']"), phNo);
+		reportStep("Shipment contact No is:"+phNo, "Pass");
+		return new ManifestCheckPage();
+	}
+	
+	public ManifestCheckPage enter_Shipment_ShipperStreet1(String ss1) throws InterruptedException, IOException {
+		type(locateElement(Locators.XPATH, "//input[@id='fx-gn-edit-shipment-shipperStreet1']"), ss1);
+		reportStep("Shipment shipper street addr1 is:"+ss1, "Pass");
+		return new ManifestCheckPage();
+	}
+	
+	public ManifestCheckPage enter_Shipment_ShipperStreet2(String ss2) throws InterruptedException, IOException {
+		type(locateElement(Locators.XPATH, "//input[@id='fx-gn-edit-shipment-shipperStreet2']"), ss2);
+		reportStep("Shipment shipper street addr2 is:"+ss2, "Pass");
+		return new ManifestCheckPage();
+	}
+
+	public ManifestCheckPage enter_Shipment_City(String city) throws InterruptedException, IOException {
+		type(locateElement(Locators.XPATH, "//input[@id='fx-gn-edit-shipment-shipperCity']"), city);
+		reportStep("Shipment shipper city is:"+city, "Pass");
+		return new ManifestCheckPage();
+	}
+	
+	public ManifestCheckPage enter_Shipment_ShipperPC(String pc) throws InterruptedException, IOException {
+		type(locateElement(Locators.XPATH, "//input[@id='fx-gn-edit-shipment-shipperPostalCode']"), pc);
+		reportStep("Shipment shipper postal code is:"+pc, "Pass");
+		return new ManifestCheckPage();
+	}
+	
+	
+	public ManifestCheckPage enter_Shipment_ConsigneeStreet1(String cs1) throws InterruptedException, IOException {
+		type(locateElement(Locators.XPATH, "//input[@id='fx-gn-edit-shipment-consigneeStreet1']"), cs1);
+		reportStep("Shipment consignee street addr1 is:"+cs1, "Pass");
+		return new ManifestCheckPage();
+	}
+	
+	public ManifestCheckPage enter_Shipment_ConsigneeStreet2(String cs2) throws InterruptedException, IOException {
+		type(locateElement(Locators.XPATH, "//input[@id='fx-gn-edit-shipment-consigneeStreet2']"), cs2);
+		reportStep("Shipment consignee street addr2 is:"+cs2, "Pass");
+		return new ManifestCheckPage();
+	}
+	
+	public ManifestCheckPage enter_Shipment_ConsigneeCity(String cc) throws InterruptedException, IOException {
+		type(locateElement(Locators.XPATH, "//input[@id='fx-gn-edit-shipment-consigneeCity']"), cc);
+		reportStep("Shipment consignee city is:"+cc, "Pass");
+		return new ManifestCheckPage();
+	}
+	
+	
+	public ManifestCheckPage enter_Shipment_ConsigneePostalCode(String cpc) throws InterruptedException, IOException {
+		type(locateElement(Locators.XPATH, "//input[@id='fx-gn-edit-shipment-consigneePostalCode']"), cpc);
+		reportStep("Shipment consignee postal code is:"+cpc, "Pass");
+		return new ManifestCheckPage();
+	}
+	
+	
+	public ManifestCheckPage enter_Shipment_ShipperName(String sn) throws InterruptedException, IOException {
+		type(locateElement(Locators.XPATH, "//input[@id='fx-gn-edit-shipment-shipperName']"), sn);
+		reportStep("Shipment shipper name is:"+sn, "Pass");
+		return new ManifestCheckPage();
+	}
+	
+	
+	public ManifestCheckPage enter_Shipment_ConsigneeName(String cn) throws InterruptedException, IOException {
+		type(locateElement(Locators.XPATH, "//input[@id='fx-gn-edit-shipment-consigneeName']"), cn);
+		reportStep("Shipment shipper consignee name is:"+cn, "Pass");
+		return new ManifestCheckPage();
+	}
+	
+	public ManifestCheckPage enter_Shipment_ShipperCompanyName(String scc) throws InterruptedException, IOException {
+		type(locateElement(Locators.XPATH, "//input[@id='fx-gn-edit-shipment-shipperCompanyName']"), scc);
+		reportStep("Shipment shipper company name is:"+scc, "Pass");
+		return new ManifestCheckPage();
+	}
+	
+	public ManifestCheckPage enter_Shipment_ConsigneeCompanyName(String ccc) throws InterruptedException, IOException {
+		type(locateElement(Locators.XPATH, "//input[@id='fx-gn-edit-shipment-consigneeCompanyName']"), ccc);
+		reportStep("Shipment consignee company name is:"+ccc, "Pass");
+		return new ManifestCheckPage();	
+		
+	}
+	
+	public ManifestCheckPage enter_Shipment_ShipperPhNo(String spn) throws InterruptedException, IOException {
+		type(locateElement(Locators.XPATH, "//input[@id='fx-gn-edit-shipment-shipperPhoneNumber']"), spn);
+		reportStep("Shipment shipper phone no is:"+spn, "Pass");
+		return new ManifestCheckPage();	
+		
+	}
+	
+	
+	public ManifestCheckPage enter_Shipment_ConsigneePhNo(String cpn) throws InterruptedException, IOException {
+		type(locateElement(Locators.XPATH, "//input[@id='fx-gn-edit-shipment-consigneePhone']"), cpn);
+		reportStep("Shipment consignee pnone No is:"+cpn, "Pass");
+		return new ManifestCheckPage();	
+		
+	}
+	
+	public ManifestCheckPage enter_Shipment_ShipmentDesc(String sd) throws InterruptedException, IOException {
+		type(locateElement(Locators.XPATH, "//textarea[@id='fx-gn-edit-shipment-desc']"), sd);
+		reportStep("Shipment description is  is:"+sd, "Pass");
+		return new ManifestCheckPage();	
+	}
+		
+	
+	public ManifestCheckPage btn_override() throws InterruptedException, IOException {
+		if(checkElementIsVisible(locateElement(Locators.XPATH, "//button[@id='btnSave']"))) {
+			click(locateElement(Locators.XPATH, "//button[@id='btnSave']"));
+			reportStep("Override button clicked successfully", "Pass");	
+		}
+		else
+		{
+			reportStep("Override button is not enabled ", "Fail");	
+		}
+		return new ManifestCheckPage();	
+
+	}
+	
+	public ManifestCheckPage btn_massRelease() throws InterruptedException, IOException {
+		if(checkElementIsVisible(locateElement(Locators.XPATH, "//button[@id='mass-release-btn']"))) {
+			click(locateElement(Locators.XPATH, "//button[@id='mass-release-btn']"));
+			reportStep("Mass release button clicked successfully", "Pass");	
+		}
+		else
+		{
+			reportStep("Mass release button unable to click", "Fail");	
+		}
+		return new ManifestCheckPage();	
+
+	}
+	
+	public ManifestCheckPage Scan_Failure_Reason(String sanitygrp,String failureReason) throws InterruptedException, IOException {
+		waitTillElementVisible(locateElement(Locators.XPATH, "//div[@id='shipment-failure-reason_panel']//span"));
+		if(getElementText(locateElement(Locators.XPATH, "//div[@id='shipment-failure-reason_panel']//span")).contains("Failure Reason")){
+			System.out.println(locateElement(Locators.XPATH, "//div[@id='shipment-failure-reason_panel']//ul//pre").getText());
+			if(locateElement(Locators.XPATH, "//div[@id='shipment-failure-reason_panel']//ul//pre").getText().contains(failureReason)) {
+				reportStep("Failure Reason for "+sanitygrp+ " is matched", "Pass");
+			}
+			else
+			{
+				reportStep("Failure Reason for "+sanitygrp+ " is not matched", "Fail");
+			}
+			
+		/*String[] fReason = locateElement(Locators.XPATH, "//div[@id='shipment-failure-reason_panel']//ul//pre").getText().split(sanitygrp.replace("_", " ")+":");
+
+		String[] Values = fReason[1].split(",");
+		for (String value : Values) {
+			if(value.contains("Scans is equal to N")||value.contains("Clearance Status is equal to Unworked")||value.contains("Consignee Street 2 is Empty")
+					||value.contains("Scans is equal to N")||value.contains("Weight (KG) (Shipment Level) is greater than or equal 10")
+					||value.contains("Shipment Desc With > 10 Words is Not Empty")) {
+				reportStep("Shipment sanity rule is failed because there is no "+sanitygrp, "Pass");
+			}
+			else
+				reportStep("Shipment sanity rule is failed because appropriate reason are not captured", "Fail");
+		break;
+		}*/
+
+	}
+		return new ManifestCheckPage();
+	
+	}
+	
+	public ManifestCheckPage unassignAllShipemnt_UserList() throws InterruptedException {
+		String shipResult="";
+		boolean AssignUser;
+		Thread.sleep(3000);
+			shipResult = getElementText(locateElement(Locators.XPATH, "//span[contains(text(),'Shipment Result')]/following::span[2]"));
+			String[] splitText =shipResult.replace(")", " ").split("/");
+			System.out.println(splitText[1]);
+			try {						
+				do{	
+					if(Integer.parseInt(splitText[1].trim())>=1) {
+						clickElementUsingJavaScript(locateElement(Locators.XPATH, "//genius-toggle-switch[contains(@uiid,'select-all-toggle')]//following::input"));
+						click(locateElement(Locators.XPATH, "//a[@id='nullify_assignment']"));
+					}					
+						try {
+							AssignUser = verifyDisplayed(locateElement(Locators.XPATH, "//a[@id='nullify_assignment']"));
+						} catch (Exception e) {
+							AssignUser=false;
+						}
+				}while(AssignUser);
+			}
+			catch(Exception e) {
+				e.getMessage();				
+			}									
+		return new ManifestCheckPage();
+	}
+	
+	public ManifestCheckPage txt_parentCons(String sheetName, String columnName, int rowIndex) throws InterruptedException, IOException {
+		try {
+			type(locateElement(Locators.XPATH, "//input[@name='parentCons']"), readExcelValue(sheetName, columnName, rowIndex));
+		} catch (Exception e) {
+			e.getMessage();
+		}
+		try {
+			click(locateElement(Locators.XPATH, "//div[contains(@class,'shipment-result-icon')]"));
+		} catch (NoSuchElementException|ElementNotInteractableException e) {
+			e.getMessage();
+		}
+		return new ManifestCheckPage();	
+
+	}
+	
+	public ManifestCheckPage btn_save() throws InterruptedException, IOException {
+		click(locateElement(Locators.XPATH, "//button[@id='btnSave']"));
+		return new ManifestCheckPage();	
+
+	}
+	
+	
+}
+
+
+
+
+               	

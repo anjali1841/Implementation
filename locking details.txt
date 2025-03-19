@@ -1,0 +1,7 @@
+https://gemini-distributed-locking-service-development.app.singdev1.paas.fedex.com/lock?clrncProcessType=imports&lockRef=7297069302422460408000&moduleName=EPERMIT&userID=4810108&entity=shipments
+
+
+
+moduleName = NULLIFY_SHIPMENT_USER_ASSIGMENT
+userID = System
+-------------------------

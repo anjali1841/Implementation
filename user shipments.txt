@@ -1,0 +1,27 @@
+392643151458
+392280824891-red color,hs code
+603667012738-com invalid
+-------------------------------------------------------------------------------------------
+High GST:--G7,X-HIGH,Total value-800000above,GEM sort code should be added
+-------------------------------------------------------------------------------------------
+EDI Ready:-total value is modified,clear all alerts,LV and G7,Importer must be added
+-------------------------------------------------------------------------------------------
+558343943453-high Gst
+---------------------------
+HVU READY:-total vlue is high ex:4000,HV,GF,importer and consignee is same,Gem and NCR
+-------------------------------------------------------------------------------------------
+770776115921-Company Aduit check,Importer and Consignee -parexel,hv,g7 ,GEM
+Company Name "PARAXEL" or "IBM" or "MAXLINEAR",MAXLINEAR,MOLEX,PAREXEL,SOURCEABILITY,TAKASAGO
+-------------------------------------------------------------------------------------------
+TN Cage-Statcodes is null,DPIA,URG,NCR,GEM sort codes mut be added
+----------------------------------------------------------------------------------------------------
+TN Caged ->EDI Ready   -----TN Permit status shipment is changed X-High,Caged ,add- ADT,AGRI,GEM THEN GIVE Tn Permit button
+----------------------------------------------------------------------------------------------------------------------------------------
+UAT :-
+Company Audit Team 
+Conditions:-
+Company Names
+GLOBALFOUNDRIES,INGRAM MICRO ASIA,MOLEX,TIGER TRANS,VEECO,SAFRAN AEROSYSTEM,MACNICA CYTECH,ARISTA NETWORKS,VARIAN MEDICAL,ZUELLIG PHARMA SPECIALITY
+
+
+
