@@ -1,0 +1,22 @@
+@CICD7
+  Scenario Outline: EntryBuild_67_9419: Verify if CMOD sort code is added from Activity log and should be displayed in floating panel
+    Given User clicks on "ENTRY_BUILD" competency
+    And Select Team as "DTQ"
+    And Disable Team "Default"
+    And Fetch the AWBNo "<SheetName>","<ColumnName>","<RowNumber>"
+    And Search the shipment "<SheetName>", "<ColumnName>", "<RowNumber>"
+    And Click on Assign to Me icon
+    Then Click on User List icon
+    And Search the shipment "<SheetName>", "<ColumnName>", "<RowNumber>"
+    #And All columns in modal window are enabled
+    Then Click on User List icon
+    And Add the sort code "CMOD" and save it succesfully in Declaration Page
+    Then Toaster message should be displayed as "Sort Codes saved"
+    And Verify Selection Code is equal to "CMOD"
+    And Remove the sort code "DTQ" and save it succesfully in Declaration Page
+    Then Toaster message should be displayed as "Sort Code saved. CMOD not assigned due to non DTQ shipment."
+
+    #Then Unassign the Shipment
+    Examples: 
+      | SheetName  | ColumnName | RowNumber |
+      | EntryBuild | AWB Number |         1 |

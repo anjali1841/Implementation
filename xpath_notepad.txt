@@ -1,0 +1,29 @@
+//span[text()='Teams:']/following-sibiling::span[contains (text(),'ATFC Select Customers ') ]
+
+
+
+
+//span[text()='Teams:']/following::span[contains(text(), 'HVU')]
+
+
+
+
+//genius-toggle-switch[@uiname='teamsToggle']["+A+"]
+
+
+(//span[@class='datatable-header-cell-label draggable'])[11]
+
+
+//*[@id="jibe-container"]/div[1]/a
+
+
+
+
+
+E-377809: CTRYDEVBIZ- DOPS for SG messages for Corporate Consignee Non-Account for GST above SGD100 - Completed
+E–398759: DOPS Advancement Fees
+E-401868: CTRYDEVBIZ- SG MVP Auto update of the Payment Status column from DOPS to CUST
+
+
+
+778604730560,405220516920,778717299907,279673410780

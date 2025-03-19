@@ -1,0 +1,114 @@
+Reverse of a string:
+input = sachin has scored his first century
+output = nachis sah dcores sih tirsf yenturc
+ 
+ 
+What is Object, Wrapper, Singleton and Inner Class in java?
+Object class in java is a superclass. That means it is at the top in the hierarchy of inheritance.
+Some of the important methods in object class is
+
+Difference between collection and classes
+Difference between String, StringBuffer, and StringBuilder?
+Why String is Immutable and Final?
+Why is multiple inheritances not possible in java
+What is an inner class
+What is thread and explain multithreading
+What is method overloading and overriding
+What is the difference between final, finally, and finalize
+What is the difference between throw and throws
+Difference between list and set
+Difference between Arraylist and LinkedList
+Difference between HashMap and HashSet
+Have you used any java design pattern
+Difference between interface and abstract class
+Difference between Comparable and Comparator
+List of gems used in automation
+What is a static keyword in java
+What are the new features in Java 8
+Work on multiple-choice questions
+Custom exceptions
+Program/Coding
+Find a most frequent element in the array and its frequency
+Reverse a string using recursion
+Program to sum of digit from number
+Find duplicate from Array
+Find Second largest number from array
+Reverse string or sentence
+Count the number of character
+Reverse numbers
+Find missing number
+Swap without third variable
+Find the longest substring
+Find the reverse string using factorial
+Reverse string
+Palindrome
+Reverse String recursively
+Write programs to print fibonacci series
+Write a program to print Fibonacci series using recursion
+Write program for factorial recursively
+Print characters from two names alternatively
+Find string from a sentence
+Find vowel and consonants from sentence
+Anagram (Philips)
+thread.sleep(-1000); by Battala preeti
+Battala preeti
+6:35 PM
+thread.sleep(-1000);
+Last read
+Popular Git Commands: -------------------... by Damarla Raviteja
+Damarla Raviteja
+6:44 PM
+Popular Git Commands:
+--------------------
+ 
+git init: INitialize a local Git repository.
+ 
+git add/ git add. : add one or more files to staging area.
+ 
+git commit -m "commit message" : commit changes to head but not to the remote repository.
+ 
+git status: check the status of your current repository and list the files you have changed.
+ 
+git log: provides a list of all the commits that made on your branch.
+ 
+git diff: view the changes you made to the file.
+ 
+git push origin<branch name> : Push the branch to the remote repository so that others can use it.
+ 
+git config -global user.name "Roger" : Tell git who you are by configuring the author name.
+ 
+git config -global user.email roger1.@gmail.com : Tell git who you are by configuring the author email id.
+ 
+git clone: creates a git repository copy from a remote repository.
+ 
+git remote add origin <server> : Connect your local repository to the remote server and add the server to be able to push to it.
+ 
+git branch <branch name> : create a new branch.
+ 
+git checkout <branch name> : switch from one branch to another branch.
+ 
+git merge <branch name> : merge a branch into an active branch.
+ 
+git rebase: Reapply commits on top of another base tip.
+ 
+ 
+-----------------------------------------------------------------------------------------------------------------------------------
+ 
+ 
+Commonly used commands on Git Bash:
+----------------------------------
+ 
+cd ~/ ----- it is used for change directory
+ 
+mkdir  --- it is used to create new folder
+ 
+cd to new folder
+ 
+git init -- it will create local repository
+ 
+create a text file in the repository.
+ 
+Later add that file to the repository by using command -- git add <file name>
+ 
+commit the changes to reflect in local repository --- git commit -m "first commmit"
+has context menu

@@ -1,0 +1,15 @@
+TC001
+Tc002
+Tc003---bulk of shipments
+Tc004-- decl view
+Tc005 gloal searcvh and multiple shipments
+Tc006--- remove DTQ
+
+
+Sort Code saved. CMOD not assigned due to non DTQ shipment.
+
+
+Then Toaster message should be displayed as "Sort Code saved. CMOD not assigned due to non DTQ shipment."
+
+
+ #And Remove the sort code "AGRI" and save it succesfully in Declaration Page
